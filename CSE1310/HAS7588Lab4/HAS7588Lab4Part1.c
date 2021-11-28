@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
     }
     printTable(peopName, peopGen, peopAge, peopDob);
 
-    swap(9, peopName, peopGen, peopAge, peopDob);
+    swap(1, peopName, peopGen, peopAge, peopDob);
 
     printTable(peopName, peopGen, peopAge, peopDob);
 
