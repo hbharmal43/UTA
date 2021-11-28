@@ -10,30 +10,43 @@
 #include <stdlib.h>
 #include <string.h>
 
+//Constants
+const int REL = 0;
+const int LAST = 1;
+const int FIRST = 2;
+const int DY = 0;
+const int MO = 1;
+const int YR = 2;
+//Max constants
+const int MAXR = 25;
+const int MAXC = 3;
+const int MAXLEN= 35;
+
+
+const int k,j,h;
+
 int checkDate(int day, int month, int year);
 int checkGender(char i);
 int checkLeap(int yr);
+void swap(int rw,char peopName[][MAXC][MAXLEN],char peopGen[], double peopAge[],int peopDob[][MAXC]);
 
-const int REL = 0;
-const int LAST = 7;
-const int FIRST = 8;
-const int GEN = 3;
-const int DY = 4;
-const int MO = 5;
-const int YR = 6;
-const int AGE = 2;
-int k,x;
-void swap(dob[x][DY], dob[x + 1][DY]);
+
+
+
 
 
 int main(int argc, char *argv[])
 {
-    char str[15][3][35];
-    char gen[15];
-    double age[15];
-    int dob[15][3];
+    //Data Arrays
+    char peopName[MAXR][MAXC][MAXLEN]; //contains first name and last name
+    char peopGen[MAXR]; //contains people's gender
+    double peopAge[MAXR]; //contains people's Age
+    int peopDob[MAXR][MAXC]; //contains people's Date of Birth
+   
+    
     char filename[20] = "people.txt";
     int i = 0;
+    int k; 
     char tempRelation[35];
     char tempFirst[25];
     char tempLast[25];
@@ -60,38 +73,83 @@ int main(int argc, char *argv[])
         fscanf(file, "%s %lf %c %d %d %d %s %s", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast, &tempFirst);
         if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
         {
-            strcpy(str[i][REL], tempRelation);
-            age[i] = tempAge;
-            gen[i] = tempGender;
-            dob[i][DY] = tempDay;
-            dob[i][MO] = tempMonth;
-            dob[i][YR] = tempYear;
-            strcpy(str[i][LAST], tempLast);
-            strcpy(str[i][FIRST], tempFirst);
+            strcpy(peopName[i][REL], tempRelation);
+            peopAge[i] = tempAge;
+            peopGen[i] = tempGender;
+            peopDob[i][DY] = tempDay;
+            peopDob[i][MO] = tempMonth;
+            peopDob[i][YR] = tempYear;
+            strcpy(peopName[i][LAST], tempLast);
+            strcpy(peopName[i][FIRST], tempFirst);
             i++;
         }        
     }
-    printf(" Relationship \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname");
+    printf("\nRelationship \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
     for (k = 0; k < i; k++)
     {
-
-        // checkDate(dob[k][DY], dob[k][MO], dob[k][YR]);
-        swaB(dob[x][DY], dob[k + 1][DY]);
-        printf("\n%10s %10lf %8c %8d/%d/%d %10s %15s", str[k][REL], age[k], gen[k], dob[k][DY], dob[k][MO], dob[k][YR], str[k][LAST], str[k][FIRST]);
+        printf("\n%10s %10lf %8c %8d/%d/%d %10s %15s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
         
     }
 
+    swap(9,peopName,peopGen,peopAge,peopDob);
+
+    
+    printf("\nRelationship \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
+    for (k = 0; k < i; k++)
+    {
+        printf("\n%10s %10lf %8c %8d/%d/%d %10s %15s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
+        
+    }
 
     
     return 0;
 }
 
-void swap(int  dob[x][DY], int dob[x + 1][DY])
+
+void swap(int rw,char peopName[][MAXC][MAXLEN],char peopGen[], double peopAge[],int peopDob[][MAXC])
 {
-    int temp;
-    temp = dob[x][DY];
-    dob[x][DY] = dob2[x + 1][DY];
-    dob2[x + 1][DY] = temp;
+    printf("\nEntered <swap> function");
+    char peopFirstNameTemp[MAXLEN];
+    char peopRelationTemp[MAXLEN];
+    char peopLastNameTemp[MAXLEN];
+    char peopGenTemp;
+    double peopAgeTemp;
+    int peopDobDay,peopDobMonth,peopDobYear;
+    printf("\n<swap> rw: %d",rw);
+    //Swapping peopName array elements
+    //Swapping FirstName
+    strcpy(peopFirstNameTemp,peopName[rw][FIRST]); //Store rw index firstName in temp
+    strcpy(peopName[rw][FIRST],peopName[rw+1][FIRST]); // Store rw+1 data in rw element
+    strcpy(peopName[rw+1][FIRST],peopFirstNameTemp); //Store temp
+    //Swapping Lastname
+    strcpy(peopLastNameTemp,peopName[rw][LAST]); //Store rw index lastName in temp
+    strcpy(peopName[rw][LAST],peopName[rw+1][LAST]); // Store rw+1 data in rw element
+    strcpy(peopName[rw+1][LAST],peopLastNameTemp); //Store temp
+    //swapping Age
+    peopAgeTemp=peopAge[rw]; // storing rw age in temp 
+    peopAge[rw]=peopAge[rw+1]; //storing rw age in rw+1 age
+    peopAge[rw+1]=peopAgeTemp;  // storing tem age in rw age
+    //swawpping Gender
+    peopGenTemp=peopGen[rw]; 
+    peopGen[rw]=peopGen[rw+1];
+    peopGen[rw+1]=peopGenTemp;
+    // swapping day
+    peopDobDay=peopDob[rw][DY]; 
+    peopDob[rw][DY]=peopDob[rw+1][DY];
+    peopDob[rw+1][DY]=peopDobDay;
+    // swapping month
+    peopDobMonth=peopDob[rw][MO]; 
+    peopDob[rw][MO]=peopDob[rw+1][MO];
+    peopDob[rw+1][MO]=peopDobMonth;
+    //swapping year
+    peopDobYear=peopDob[rw][YR]; 
+    peopDob[rw][YR]=peopDob[rw+1][YR];
+    peopDob[rw+1][YR]=peopDobYear;
+    
+    
+
+
+    
 }
 
 int checkGender(char i)
