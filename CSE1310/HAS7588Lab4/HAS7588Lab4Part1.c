@@ -20,33 +20,29 @@ const int YR = 2;
 //Max constants
 const int MAXR = 25;
 const int MAXC = 3;
-const int MAXLEN= 35;
+const int MAXLEN = 35;
 
+int filerows = 0;
 
-const int k,j,h;
 
 int checkDate(int day, int month, int year);
 int checkGender(char i);
 int checkLeap(int yr);
-void swap(int rw,char peopName[][MAXC][MAXLEN],char peopGen[], double peopAge[],int peopDob[][MAXC]);
-
-
-
-
-
+void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
+void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 
 int main(int argc, char *argv[])
 {
     //Data Arrays
+
     char peopName[MAXR][MAXC][MAXLEN]; //contains first name and last name
-    char peopGen[MAXR]; //contains people's gender
-    double peopAge[MAXR]; //contains people's Age
-    int peopDob[MAXR][MAXC]; //contains people's Date of Birth
-   
-    
+    char peopGen[MAXR];                //contains people's gender
+    double peopAge[MAXR];              //contains people's Age
+    int peopDob[MAXR][MAXC];           //contains people's Date of Birth
+
     char filename[20] = "people.txt";
     int i = 0;
-    int k; 
+    int k;
     char tempRelation[35];
     char tempFirst[25];
     char tempLast[25];
@@ -82,74 +78,69 @@ int main(int argc, char *argv[])
             strcpy(peopName[i][LAST], tempLast);
             strcpy(peopName[i][FIRST], tempFirst);
             i++;
-        }        
+            filerows = i;
+        }
     }
-    printf("\nRelationship \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
-    for (k = 0; k < i; k++)
-    {
-        printf("\n%10s %10lf %8c %8d/%d/%d %10s %15s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
-        
-    }
+    printTable(peopName, peopGen, peopAge, peopDob);
 
-    swap(9,peopName,peopGen,peopAge,peopDob);
+    swap(9, peopName, peopGen, peopAge, peopDob);
 
-    
-    printf("\nRelationship \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
-    for (k = 0; k < i; k++)
-    {
-        printf("\n%10s %10lf %8c %8d/%d/%d %10s %15s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
-        
-    }
+    printTable(peopName, peopGen, peopAge, peopDob);
 
-    
+
+
+
+
     return 0;
 }
 
-
-void swap(int rw,char peopName[][MAXC][MAXLEN],char peopGen[], double peopAge[],int peopDob[][MAXC])
+void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
-    printf("\nEntered <swap> function");
     char peopFirstNameTemp[MAXLEN];
     char peopRelationTemp[MAXLEN];
     char peopLastNameTemp[MAXLEN];
     char peopGenTemp;
     double peopAgeTemp;
-    int peopDobDay,peopDobMonth,peopDobYear;
-    printf("\n<swap> rw: %d",rw);
+    int peopDobDay, peopDobMonth, peopDobYear;
     //Swapping peopName array elements
     //Swapping FirstName
-    strcpy(peopFirstNameTemp,peopName[rw][FIRST]); //Store rw index firstName in temp
-    strcpy(peopName[rw][FIRST],peopName[rw+1][FIRST]); // Store rw+1 data in rw element
-    strcpy(peopName[rw+1][FIRST],peopFirstNameTemp); //Store temp
+    strcpy(peopFirstNameTemp, peopName[rw][FIRST]);       //Store rw index firstName in temp
+    strcpy(peopName[rw][FIRST], peopName[rw + 1][FIRST]); // Store rw+1 data in rw element
+    strcpy(peopName[rw + 1][FIRST], peopFirstNameTemp);   //Store temp
     //Swapping Lastname
-    strcpy(peopLastNameTemp,peopName[rw][LAST]); //Store rw index lastName in temp
-    strcpy(peopName[rw][LAST],peopName[rw+1][LAST]); // Store rw+1 data in rw element
-    strcpy(peopName[rw+1][LAST],peopLastNameTemp); //Store temp
+    strcpy(peopLastNameTemp, peopName[rw][LAST]);       //Store rw index lastName in temp
+    strcpy(peopName[rw][LAST], peopName[rw + 1][LAST]); // Store rw+1 data in rw element
+    strcpy(peopName[rw + 1][LAST], peopLastNameTemp);   //Store temp
     //swapping Age
-    peopAgeTemp=peopAge[rw]; // storing rw age in temp 
-    peopAge[rw]=peopAge[rw+1]; //storing rw age in rw+1 age
-    peopAge[rw+1]=peopAgeTemp;  // storing tem age in rw age
+    peopAgeTemp = peopAge[rw];     // storing rw age in temp
+    peopAge[rw] = peopAge[rw + 1]; //storing rw age in rw+1 age
+    peopAge[rw + 1] = peopAgeTemp; // storing tem age in rw age
     //swawpping Gender
-    peopGenTemp=peopGen[rw]; 
-    peopGen[rw]=peopGen[rw+1];
-    peopGen[rw+1]=peopGenTemp;
+    peopGenTemp = peopGen[rw];
+    peopGen[rw] = peopGen[rw + 1];
+    peopGen[rw + 1] = peopGenTemp;
     // swapping day
-    peopDobDay=peopDob[rw][DY]; 
-    peopDob[rw][DY]=peopDob[rw+1][DY];
-    peopDob[rw+1][DY]=peopDobDay;
+    peopDobDay = peopDob[rw][DY];
+    peopDob[rw][DY] = peopDob[rw + 1][DY];
+    peopDob[rw + 1][DY] = peopDobDay;
     // swapping month
-    peopDobMonth=peopDob[rw][MO]; 
-    peopDob[rw][MO]=peopDob[rw+1][MO];
-    peopDob[rw+1][MO]=peopDobMonth;
+    peopDobMonth = peopDob[rw][MO];
+    peopDob[rw][MO] = peopDob[rw + 1][MO];
+    peopDob[rw + 1][MO] = peopDobMonth;
     //swapping year
-    peopDobYear=peopDob[rw][YR]; 
-    peopDob[rw][YR]=peopDob[rw+1][YR];
-    peopDob[rw+1][YR]=peopDobYear;
-    
-    
+    peopDobYear = peopDob[rw][YR];
+    peopDob[rw][YR] = peopDob[rw + 1][YR];
+    peopDob[rw + 1][YR] = peopDobYear;
+}
 
-
-    
+void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
+{
+    printf("\n-------------------------------------------------------------------------------------\n");
+    printf("\nRelationship \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
+    for (int k = 0; k < filerows; k++)
+    {
+        printf("\n%9s %13lf %5c %10d/%d/%d %15s %15s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
+    }
 }
 
 int checkGender(char i)
