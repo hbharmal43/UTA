@@ -1,0 +1,9 @@
+File people.txt opened correctly
+
+Ali Joe, friend, passed away at age 16.000000
+
+Arnold Schwartz, Uncle, passed away at age 45.000000
+
+Broderick Philip, Great-Uncle, passed away at age 42.000000
+
+At age 38.000000, Louis Correa was born on 30/4/1983 and is the oldest living person in the file
