@@ -14,7 +14,7 @@ int main()
     int binaryOutput[10], inputValue;
     int i, j;
 
-    printf("Please Enter an Integer Number You want to Convert  :  ");
+    printf("\nPlease Enter an Integer Number You want to Convert  :  ");
     scanf("%d", &inputValue);
     for(i = 0; inputValue > 0; i++)
     {
