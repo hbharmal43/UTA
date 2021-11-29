@@ -24,12 +24,12 @@ const int MAXLEN = 35;
 
 int filerows = 0;
 
-
 int checkDate(int day, int month, int year);
 int checkGender(char i);
 int checkLeap(int yr);
 void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
+void sortAge(int k, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 
 int main(int argc, char *argv[])
 {
@@ -81,15 +81,13 @@ int main(int argc, char *argv[])
             filerows = i;
         }
     }
+    // printTable(peopName, peopGen, peopAge, peopDob);
+
+    //swap(1, peopName, peopGen, peopAge, peopDob);
+    // BubbleSortDay(peopAge,filerows);
+    //printTable(peopName, peopGen, peopAge, peopDob);
+    sortAge(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
-
-    swap(1, peopName, peopGen, peopAge, peopDob);
-
-    printTable(peopName, peopGen, peopAge, peopDob);
-
-
-
-
 
     return 0;
 }
@@ -135,12 +133,51 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
 
 void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
-    printf("\n-------------------------------------------------------------------------------------\n");
+    // printf("\n-------------------------------------------------------------------------------------\n");
     printf("\nRelationship \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
     for (int k = 0; k < filerows; k++)
     {
         printf("\n%9s %13lf %5c %10d/%d/%d %15s %15s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
     }
+}
+
+void sortAge(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
+{
+    // printf("\n<sortAge> Entered\n");
+    // printf("\n<sortAge> size = %d\n",size);
+    for (int step = 0; step < size - 1; ++step)
+    {
+        // printf("\n<sortAge> Pass = %d\n",step);
+        // printTable(peopName, peopGen, peopAge, peopDob);
+        // loop to compare array elements
+        for (int i = 0; i < size - step - 1; ++i)
+        {
+            // printf("\n<sortAge> I = %d\n",i);
+            // compare two adjacent elements
+            // change > to < to sort in descending order
+            // printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
+            // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
+            if (peopAge[i] > peopAge[i + 1])
+            {
+                // printf("\n<sortAge> peopAge[%d] > peopAge[%d]",i,i+1);
+                swap(i, peopName, peopGen, peopAge, peopDob);
+            }
+        }
+    }
+
+    // for (int b = 0; b < size - 1; b++)
+    // {
+
+    //     if (peopAge[b] > peopAge[b + 1])
+    //     {
+
+    //         for (int z = 0; z < size - 1; z++)
+    //         {
+    //             swap(z, peopName, peopGen, peopAge, peopDob);
+    //             printf("end");
+    //         }
+    //     }
+    // }
 }
 
 int checkGender(char i)
