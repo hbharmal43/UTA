@@ -74,8 +74,8 @@ int main(int argc, char *argv[])
         if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
         {
             strcpy(peopName[i][REL], tempRelation);
-            peopAge[i] = tempAge;
-            peopGen[i] = tempGender;
+            peopAge[i] = toupper(tempAge);
+            peopGen[i] = toupper(tempGender);
             peopDob[i][DY] = tempDay;
             peopDob[i][MO] = tempMonth;
             peopDob[i][YR] = tempYear;
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
    // sortAge(filerows, peopName, peopGen, peopAge, peopDob);
     //printTable(peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
-    sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+  //  sortRel(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
 
 
@@ -178,10 +178,20 @@ void sortAge(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peo
 }
 
 
-void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
+/* void sortRel(int i, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
+for(i=0;i<MAXR-1;i++){
+    for(int j=i+1;j<MAXR;j++){
+        if(strcmp(peopGen[i][],peopGen[j])>0){
+            swap(i, peopName, peopGen, peopAge, peopDob);
+        }
+
+    }
+}
 
 }
+*/
+
 int checkGender(char i)
 {
     if (i == 'M' || i == 'F' || i == 'N' || i == 'U')

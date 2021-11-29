@@ -4,7 +4,7 @@ Freind 17 U 09 02 2004 Duke-Regan Jace
 Sister 17 M 02 04 2004 Graves Faya
 Brother 15 M 07 01 2006 Findlay XAE12
 Gym_buddy 20 M 23 12 2001 Mccray Will
-Uncle 38 M 30 04 1983 Correa Louis
+Uncle 38 m 30 04 1983 Correa Louis
 Uncle 45 M 10 04 1981 Schwartz Arnold
 Aunt 37 F 13 08 1984 Miller Thea
 Great-Uncle 42 M 16 11 1975 Philip Broderick
