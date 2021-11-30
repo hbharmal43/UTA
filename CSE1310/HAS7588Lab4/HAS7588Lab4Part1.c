@@ -260,7 +260,6 @@ for (int step = 0; step < size - 1; step++)
     }
 }
 
-
  void sortDate(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
     // printf("%c\n",peopGen[0]);
@@ -291,7 +290,6 @@ for (int step = 0; step < size - 1; step++)
         }
     }
 }
-
 
 int checkGender(char i)
 {
@@ -343,6 +341,7 @@ int checkDate(int day, int month, int year)
     //errorMsgs(dateInvalid);
     return dateInvalid;
 }
+
 void errorMsgs(int flag)
 {
     switch (flag)
