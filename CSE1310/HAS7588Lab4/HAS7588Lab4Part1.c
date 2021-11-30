@@ -178,19 +178,7 @@ void sortAge(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peo
 }
 
 
-/* void sortRel(int i, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
-{
-for(i=0;i<MAXR-1;i++){
-    for(int j=i+1;j<MAXR;j++){
-        if(strcmp(peopGen[i][],peopGen[j])>0){
-            swap(i, peopName, peopGen, peopAge, peopDob);
-        }
 
-    }
-}
-
-}
-*/
 
 int checkGender(char i)
 {
