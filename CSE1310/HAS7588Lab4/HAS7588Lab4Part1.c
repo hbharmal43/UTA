@@ -74,8 +74,10 @@ int main(int argc, char *argv[])
         if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
         {
             strcpy(peopName[i][REL], tempRelation);
-            peopAge[i] = toupper(tempAge);
+            peopAge[i] = tempAge;
             peopGen[i] = toupper(tempGender);
+            peopAge[i] = tempAge;
+            peopGen[i] = tempGender;
             peopDob[i][DY] = tempDay;
             peopDob[i][MO] = tempMonth;
             peopDob[i][YR] = tempYear;
@@ -93,8 +95,12 @@ int main(int argc, char *argv[])
     //printTable(peopName, peopGen, peopAge, peopDob);
    // sortAge(filerows, peopName, peopGen, peopAge, peopDob);
     //printTable(peopName, peopGen, peopAge, peopDob);
-    printTable(peopName, peopGen, peopAge, peopDob);
+    //printTable(peopName, peopGen, peopAge, peopDob);
   //  sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+   //sortAge(filerows, peopName, peopGen, peopAge, peopDob);
+    //printTable(peopName, peopGen, peopAge, peopDob);
+    //printTable(peopName, peopGen, peopAge, peopDob);
+    sortRel(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
 
 
@@ -118,6 +124,13 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
     strcpy(peopLastNameTemp, peopName[rw][LAST]);       //Store rw index lastName in temp
     strcpy(peopName[rw][LAST], peopName[rw + 1][LAST]); // Store rw+1 data in rw element
     strcpy(peopName[rw + 1][LAST], peopLastNameTemp);   //Store temp
+    //swapping relationship
+    strcpy(peopRelationTemp, peopName[rw][REL]);       //Store rw index lastName in temp
+    strcpy(peopName[rw][REL], peopName[rw + 1][REL]); // Store rw+1 data in rw element
+    strcpy(peopName[rw + 1][REL], peopRelationTemp);
+    
+    
+    
     //swapping Age
     peopAgeTemp = peopAge[rw];     // storing rw age in temp
     peopAge[rw] = peopAge[rw + 1]; //storing rw age in rw+1 age
@@ -142,26 +155,26 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
 
 void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
-    // printf("\n-------------------------------------------------------------------------------------\n");
+     printf("-------------------------------------------------------------------------------------");
     printf("\nRelationship \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
     for (int k = 0; k < filerows; k++)
     {   //printf("%s",toupper(peopName[k][REL][0]));
         printf("\n%9s %13lf %5c %10d/%d/%d %15s %15s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
-        //printf("%s",toupper(peopName[k][REL][0]));
 
     }
+    printf("-------------------------------------------------------------------------------------");
 }
 
 void sortAge(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
     // printf("\n<sortAge> Entered\n");
     // printf("\n<sortAge> size = %d\n",size);
-    for (int step = 0; step < size - 1; ++step)
+    for (int step = 0; step < size - 1; step++)
     {
         // printf("\n<sortAge> Pass = %d\n",step);
         // printTable(peopName, peopGen, peopAge, peopDob);
         // loop to compare array elements
-        for (int i = 0; i < size - step - 1; ++i)
+        for (int i = 0; i < size - step - 1; i++)
         {
             // printf("\n<sortAge> I = %d\n",i);
             // compare two adjacent elements
@@ -177,6 +190,33 @@ void sortAge(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peo
     }
 }
 
+ void sortRel(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
+{
+    // printf("%c\n",peopGen[0]);
+    // printf("%c\n",peopGen[1]);
+    // printf("%c\n",peopGen[2]);
+
+for (int step = 0; step < size - 1; step++)
+    {
+        // printf("\n<sortAge> Pass = %d\n",step);
+        // printTable(peopName, peopGen, peopAge, peopDob);
+        // loop to compare array elements
+        for (int i = 0; i < size - step - 1; i++)
+        {
+            //printf("\n<sortAge> I = %d\n",i);
+            // compare two adjacent elements
+            //printf("%s and %s\n",peopName[i],peopName[i+1]);
+            // change > to < to sort in descending order
+            // printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
+            // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
+            if (strcmp(peopName[i][REL],peopName[i + 1][REL])>0)
+            {
+                swap(i, peopName, peopGen, peopAge, peopDob);
+
+            }
+        }
+    }
+}
 
 
 
