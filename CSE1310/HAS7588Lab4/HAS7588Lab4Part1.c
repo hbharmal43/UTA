@@ -35,6 +35,7 @@ void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[],
 void sortAge(int k, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortName(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
+void sortDate(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 
 
 int main(int argc, char *argv[])
@@ -103,7 +104,8 @@ int main(int argc, char *argv[])
     //printTable(peopName, peopGen, peopAge, peopDob);
     //printTable(peopName, peopGen, peopAge, peopDob);
     //sortRel(filerows, peopName, peopGen, peopAge, peopDob);
-    sortName(filerows, peopName, peopGen, peopAge, peopDob);
+    // sortName(filerows, peopName, peopGen, peopAge, peopDob);
+    sortDate(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
 
 
@@ -278,12 +280,12 @@ for (int step = 0; step < size - 1; step++)
             // change > to < to sort in descending order
             // printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
             // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
-            if (strcmp(peopName[i][LAST],peopName[i + 1][LAST])>0 && strcmp(peopName[i][FIRST],peopName[i + 1][FIRST])<0 )
-            {
-                //printf("what");
+            if (peopDob[i][MO]>peopDob[i+1][MO] )
+            {   
                 swap(i, peopName, peopGen, peopAge, peopDob);
-
             }
+
+  
         }
     }
 }
