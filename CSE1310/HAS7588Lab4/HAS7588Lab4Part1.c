@@ -280,12 +280,14 @@ for (int step = 0; step < size - 1; step++)
             // change > to < to sort in descending order
             // printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
             // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
-            if (peopDob[i][MO]>peopDob[i+1][MO] )
+            if (peopDob[i][MO]>peopDob[i+1][MO])
             {   
                 swap(i, peopName, peopGen, peopAge, peopDob);
             }
-
-  
+            else if (peopDob[i][MO]==peopDob[i+1][MO] && peopDob[i][DY]>peopDob[i+1][DY])
+            {
+                swap(i, peopName, peopGen, peopAge, peopDob);          
+            }
         }
     }
 }
