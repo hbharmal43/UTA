@@ -34,6 +34,8 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
 void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortAge(int k, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
+void sortName(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
+
 
 int main(int argc, char *argv[])
 {
@@ -100,7 +102,8 @@ int main(int argc, char *argv[])
    //sortAge(filerows, peopName, peopGen, peopAge, peopDob);
     //printTable(peopName, peopGen, peopAge, peopDob);
     //printTable(peopName, peopGen, peopAge, peopDob);
-    sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+    //sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+    sortName(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
 
 
@@ -211,6 +214,36 @@ for (int step = 0; step < size - 1; step++)
             // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
             if (strcmp(peopName[i][REL],peopName[i + 1][REL])>0)
             {
+                swap(i, peopName, peopGen, peopAge, peopDob);
+
+            }
+        }
+    }
+}
+
+
+ void sortName(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
+{
+    // printf("%c\n",peopGen[0]);
+    // printf("%c\n",peopGen[1]);
+    // printf("%c\n",peopGen[2]);
+
+for (int step = 0; step < size - 1; step++)
+    {
+        // printf("\n<sortAge> Pass = %d\n",step);
+        // printTable(peopName, peopGen, peopAge, peopDob);
+        // loop to compare array elements
+        for (int i = 0; i < size - step - 1; i++)
+        {
+            //printf("\n<sortAge> I = %d\n",i);
+            // compare two adjacent elements
+            //printf("%s and %s\n",peopName[i],peopName[i+1]);
+            // change > to < to sort in descending order
+            // printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
+            // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
+            if (strcmp(peopName[i][FIRST],peopName[i + 1][FIRST])>0 && strcmp(peopName[i][LAST],peopName[i + 1][LAST])<0  )
+            {
+                //printf("what");
                 swap(i, peopName, peopGen, peopAge, peopDob);
 
             }
