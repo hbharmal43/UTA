@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
         {
             strcpy(peopName[i][REL], tempRelation);
             peopAge[i] = tempAge;
-            peopGen[i] = toupper(tempGender);
+            peopGen[i] = tempGender;
             peopDob[i][DY] = tempDay;
             peopDob[i][MO] = tempMonth;
             peopDob[i][YR] = tempYear;
@@ -91,10 +91,10 @@ int main(int argc, char *argv[])
     //swap(1, peopName, peopGen, peopAge, peopDob);
     // BubbleSortDay(peopAge,filerows);
     //printTable(peopName, peopGen, peopAge, peopDob);
-   // sortAge(filerows, peopName, peopGen, peopAge, peopDob);
+   //sortAge(filerows, peopName, peopGen, peopAge, peopDob);
     //printTable(peopName, peopGen, peopAge, peopDob);
-    printTable(peopName, peopGen, peopAge, peopDob);
-  //  sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+    //printTable(peopName, peopGen, peopAge, peopDob);
+    sortRel(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
 
 
@@ -178,21 +178,26 @@ void sortAge(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peo
 }
 
 
- void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
+ void sortRel(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
-  for (int step = 0; step < size - 1; ++step)
+    // printf("%c\n",peopGen[0]);
+    // printf("%c\n",peopGen[1]);
+    // printf("%c\n",peopGen[2]);
+
+for (int step = 0; step < size - 1; ++step)
     {
         // printf("\n<sortAge> Pass = %d\n",step);
         // printTable(peopName, peopGen, peopAge, peopDob);
         // loop to compare array elements
         for (int i = 0; i < size - step - 1; ++i)
         {
-            // printf("\n<sortAge> I = %d\n",i);
+            //printf("\n<sortAge> I = %d\n",i);
             // compare two adjacent elements
+            //printf("%c and %c\n",peopGen[i],peopGen[i+1]);
             // change > to < to sort in descending order
             // printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
             // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
-            if (strcmp(peopGen[i],peopGen[i + 1])>0)
+            if (strcmp(&peopGen[i],&peopGen[i + 1])>0)
             {
                 // printf("\n<sortAge> peopAge[%d] > peopAge[%d]",i,i+1);
                 swap(i, peopName, peopGen, peopAge, peopDob);
