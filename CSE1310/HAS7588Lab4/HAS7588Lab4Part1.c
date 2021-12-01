@@ -97,16 +97,20 @@ int main(int argc, char *argv[])
     //swap(1, peopName, peopGen, peopAge, peopDob);
     // BubbleSortDay(peopAge,filerows);
     //printTable(peopName, peopGen, peopAge, peopDob);
+    printf("\t\t Sorting Age\n");
    sortAge(filerows, peopName, peopGen, peopAge, peopDob);
-    //printTable(peopName, peopGen, peopAge, peopDob);
-    //printTable(peopName, peopGen, peopAge, peopDob);
-  //  sortRel(filerows, peopName, peopGen, peopAge, peopDob);
-   //sortAge(filerows, peopName, peopGen, peopAge, peopDob);
-    //printTable(peopName, peopGen, peopAge, peopDob);
-    //printTable(peopName, peopGen, peopAge, peopDob);
-    //sortRel(filerows, peopName, peopGen, peopAge, peopDob);
-    // sortName(filerows, peopName, peopGen, peopAge, peopDob);
-    //sortDate(filerows, peopName, peopGen, peopAge, peopDob);
+    printTable(peopName, peopGen, peopAge, peopDob);
+
+    printf("\n\t\t Sorting Relationship\n");
+   sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+    printTable(peopName, peopGen, peopAge, peopDob);
+        
+    printf("\n\t\t Sorting Names\n");
+    sortName(filerows, peopName, peopGen, peopAge, peopDob);
+    printTable(peopName, peopGen, peopAge, peopDob);
+
+    printf("\n\t\t Sorting Dates\n");
+    sortDate(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
 
 
