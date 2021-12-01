@@ -161,14 +161,14 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
 
 void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
-     printf("-------------------------------------------------------------------------------------");
-    printf("\nRelationship \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
+    printf("==============================================================================================================");
+    printf("\nRelationship  \t Age \t\t Gender \t DD/MM/YY\tLastname\tFirstname\n");
     for (int k = 0; k < filerows; k++)
     {   //printf("%s",toupper(peopName[k][REL][0]));
-        printf("\n%9s %13lf %5c %10d/%d/%d %15s %15s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
+        printf("%-15s  %12lf %7c %12d/%d/%d \t %-20s %-20s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
 
     }
-    printf("-------------------------------------------------------------------------------------");
+    printf("==============================================================================================================");
 }
 
 void sortAge(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
