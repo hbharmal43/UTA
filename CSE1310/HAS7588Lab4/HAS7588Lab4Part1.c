@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
     while (!feof(file))
     {
 
-        fscanf(file, "%s %lf %c %d %d %d %[^,]%s %[^\n]", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast, &comma, &tempFirst);   
+        fscanf(file, "%s %lf %c %d %d %d %s %[^\n]", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast, &tempFirst);   
          if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
         {
             strcpy(peopName[i][REL], tempRelation);
@@ -162,10 +162,10 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
 void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
     printf("==============================================================================================================");
-    printf("\nRelationship  \t Age \t\t Gender \t DD/MM/YY\tLastname\tFirstname\n");
+    printf("\nRelationship  \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
     for (int k = 0; k < filerows; k++)
     {   //printf("%s",toupper(peopName[k][REL][0]));
-        printf("%-15s  %12lf %7c %12d/%d/%d \t %-20s %-20s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
+        printf("%-15s  %4.2f %7c %12d/%d/%d \t %-20s %-20s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
 
     }
     printf("==============================================================================================================");

@@ -1,4 +1,4 @@
-mother 74 F 23 9 1935 Williams Schou, Sandra Carter
+mother 74 F 23 9 1935 Williams-Schou, Sandra Carter
 brother 58 M 15 10 1969 Matheny, Albert
 father -86 M 5 1 1935 Matheny, Albert
 friend 63 N 29 9 1958 Son Jae, Stanley
@@ -13,7 +13,6 @@ colleague 28 U 8 8 2001 Vetenari-Vines, Dale
 spouse 71 M 12 2 1950 Colcord, John Nathan 
 stepbrother 54 U 31 9 1967 Manous, Brady
 grandmother 102 F 20 9 1902 Williams, Mildred Carter McKay
-friend 30 F 20 12 1991 Patel, Liz
 faculty_mentor 48 N 9 9 1951 Harbison, Dr. Karan
 Friend 16 M 01 01 2000 Joe, Ali
 Friend 18 F 01 04 2003 Moran, Mahima
