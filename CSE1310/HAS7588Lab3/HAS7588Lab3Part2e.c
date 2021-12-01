@@ -25,14 +25,14 @@ int checkDate(int day, int month, int year);
 int checkGender(char i);
 int checkLeap(int yr);
 int findAge(int currentYear, int birthYear);
-int findoldest(double age[], int n, int currentYear, int dob[][YR]);
+int findoldest(double peopAge[], int n, int currentYear, int peopDob[][YR]);
 
 int main(int argc, char *argv[])
 {
-    char str[15][3][35];
-    char gen[15];
-    double age[15];
-    int dob[15][3];
+    char peopName[15][3][35];
+    char peopGen[15];
+    double peopAge[15];
+    int peopDob[15][3];
     char filename[20] = "people.txt";
     int i = 0;
     char tempRelation[35];
@@ -69,17 +69,17 @@ int main(int argc, char *argv[])
     while (!feof(file))
     {
 
-        fscanf(file, "%s %lf %c %d %d %d %s %s", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast, &tempFirst);
+        fscanf(file, "%s %lf %c %d %d %d %[^,]%s %[^\n]", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast, &tempFirst);
         if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
         {
-            strcpy(str[i][REL], tempRelation);
-            age[i] = tempAge;
-            gen[i] = tempGender;
-            dob[i][DY] = tempDay;
-            dob[i][MO] = tempMonth;
-            dob[i][YR] = tempYear;
-            strcpy(str[i][LAST], tempLast);
-            strcpy(str[i][FIRST], tempFirst);
+            strcpy(peopName[i][REL], tempRelation);
+            peopAge[i] = tempAge;
+            peopGen[i] = tempGender;
+            peopDob[i][DY] = tempDay;
+            peopDob[i][MO] = tempMonth;
+            peopDob[i][YR] = tempYear;
+            strcpy(peopName[i][LAST], tempLast);
+            strcpy(peopName[i][FIRST], tempFirst);
             i++;
         }
     }
@@ -87,31 +87,31 @@ int main(int argc, char *argv[])
     for (k = 0; k < i; k++)
     {
 
-        if (!(findAge(currentyear, dob[k][YR]) == age[k] || findAge(currentyear, dob[k][YR]) == age[k] + 1 || findAge(currentyear, dob[k][YR]) == age[k] - 1))
+        if (!(findAge(currentyear, peopDob[k][YR]) == peopAge[k] || findAge(currentyear, peopDob[k][YR]) == peopAge[k] + 1 || findAge(currentyear, peopDob[k][YR]) == peopAge[k] - 1))
         {
-            printf("\n%s %s, %s, passed away at age %lf\n", str[k][FIRST], str[k][LAST], str[k][REL], age[k]);
-            fprintf(OutFile,"\n%s %s, %s, passed away at age %lf\n", str[k][FIRST], str[k][LAST], str[k][REL], age[k]);
+            printf("\n%s %s, %s, passed away at peopAge %lf\n", peopName[k][FIRST], peopName[k][LAST], peopName[k][REL], peopAge[k]);
+            fprintf(OutFile,"\n%s %s, %s, passed away at peopAge %lf\n", peopName[k][FIRST], peopName[k][LAST], peopName[k][REL], peopAge[k]);
 
         }
     }
 
-    int oldestRow = findoldest(age, i, currentyear, dob);
-    printf("\nAt age %lf, %s %s was born on %d/%d/%d and is the oldest living person in the file\n", age[oldestRow], str[oldestRow][FIRST], str[oldestRow][LAST], dob[oldestRow][DY], dob[oldestRow][MO], dob[oldestRow][YR]);
-    fprintf(OutFile,"\nAt age %lf, %s %s was born on %d/%d/%d and is the oldest living person in the file\n", age[oldestRow], str[oldestRow][FIRST], str[oldestRow][LAST], dob[oldestRow][DY], dob[oldestRow][MO], dob[oldestRow][YR]);
+    int oldestRow = findoldest(peopAge, i, currentyear, peopDob);
+    printf("\nAt peopAge %lf, %s %s was born on %d/%d/%d and is the oldest living person in the file\n", peopAge[oldestRow], peopName[oldestRow][FIRST], peopName[oldestRow][LAST], peopDob[oldestRow][DY], peopDob[oldestRow][MO], peopDob[oldestRow][YR]);
+    fprintf(OutFile,"\nAt peopAge %lf, %s %s was born on %d/%d/%d and is the oldest living person in the file\n", peopAge[oldestRow], peopName[oldestRow][FIRST], peopName[oldestRow][LAST], peopDob[oldestRow][DY], peopDob[oldestRow][MO], peopDob[oldestRow][YR]);
 
     return 0;
 }
 
-int findoldest(double age[], int n, int currentyear, int dob[][3])
+int findoldest(double peopAge[], int n, int currentyear, int peopDob[][3])
 {
     double oldest = 0;
     int row = 0;
     for (int i = 0; i < n; i++)
     {
 
-        if (oldest < age[i] && (findAge(currentyear, dob[i][YR]) == age[i] || findAge(currentyear, dob[i][YR]) == age[i] + 1 || findAge(currentyear, dob[i][YR]) == age[i] - 1))
+        if (oldest < peopAge[i] && (findAge(currentyear, peopDob[i][YR]) == peopAge[i] || findAge(currentyear, peopDob[i][YR]) == peopAge[i] + 1 || findAge(currentyear, peopDob[i][YR]) == peopAge[i] - 1))
         {
-            oldest = age[i];
+            oldest = peopAge[i];
             row = i;
         }
     }

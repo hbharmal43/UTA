@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
     int tempDay = 0;
     int tempMonth = 0;
     int tempYear = 0;
+    char comma =' ';
     strcpy(filename, argv[1]);
     FILE *file = fopen(filename, "r");
 
@@ -73,8 +74,8 @@ int main(int argc, char *argv[])
     while (!feof(file))
     {
 
-        fscanf(file, "%s %lf %c %d %d %d %s %s", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast, &tempFirst);
-        if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
+        fscanf(file, "%s %lf %c %d %d %d %[^,]%s %[^\n]", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast, &comma, &tempFirst);   
+         if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
         {
             strcpy(peopName[i][REL], tempRelation);
             peopAge[i] = tempAge;
@@ -96,7 +97,7 @@ int main(int argc, char *argv[])
     //swap(1, peopName, peopGen, peopAge, peopDob);
     // BubbleSortDay(peopAge,filerows);
     //printTable(peopName, peopGen, peopAge, peopDob);
-   // sortAge(filerows, peopName, peopGen, peopAge, peopDob);
+   sortAge(filerows, peopName, peopGen, peopAge, peopDob);
     //printTable(peopName, peopGen, peopAge, peopDob);
     //printTable(peopName, peopGen, peopAge, peopDob);
   //  sortRel(filerows, peopName, peopGen, peopAge, peopDob);
@@ -105,7 +106,7 @@ int main(int argc, char *argv[])
     //printTable(peopName, peopGen, peopAge, peopDob);
     //sortRel(filerows, peopName, peopGen, peopAge, peopDob);
     // sortName(filerows, peopName, peopGen, peopAge, peopDob);
-    sortDate(filerows, peopName, peopGen, peopAge, peopDob);
+    //sortDate(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
 
 
