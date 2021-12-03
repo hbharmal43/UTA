@@ -1,0 +1,16 @@
+mother 74 F 23 9 1935 Williams-Schou, Sandra Carter
+brother 58 M 15 10 1969 Matheny, Albert
+father -86 M 5 1 1935 Matheny, Albert
+friend 63 N 29 9 1958 Son Jae, Stanley
+cousin 75 M 31 2 1946 Francis, William
+sister 52.5 F 19 5 1969 McKay, Chris
+brother-in-law 58 M 23 2 1963 Mayor-Domo, Tim
+hero 18 M 9 5 1955 The Frog, Kermit
+previous_boss 41 M 18 7 1979 Ebrahimi, Ahmed
+uncle 83 B 3 3 1933 Bishop, Forbes
+goddaughter 0.75 F 13 3 2021 Lane, Holly
+colleague 28 U 8 8 2001 Vetenari-Vines, Dale
+spouse 71 M 12 2 1950 Colcord, John Nathan 
+stepbrother 54 U 31 9 1967 Manous, Brady
+grandmother 102 F 20 9 1902 Williams, Mildred Carter McKay
+faculty_mentor 48 N 9 9 1951 Harbison, Dr. Karan

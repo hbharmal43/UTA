@@ -36,6 +36,8 @@ void sortAge(int k, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAg
 void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortName(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortDate(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
+int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgt[MAXLEN], int first, int last);
+void search(char string[MAXR][MAXC][MAXLEN],int n,char word[]);
 
 
 int main(int argc, char *argv[])
@@ -96,22 +98,29 @@ int main(int argc, char *argv[])
 
     //swap(1, peopName, peopGen, peopAge, peopDob);
     // BubbleSortDay(peopAge,filerows);
-    //printTable(peopName, peopGen, peopAge, peopDob);
-    printf("\t\t Sorting Age\n");
-   sortAge(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
+//int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgt[MAXLEN], int first, int last)
+ char test[20] = "Joe";
+binsearch(peopName,"Joe",0,filerows-1);
+// printf("%d",result);
+//void search(char string[MAXR][MAXC][MAXLEN],int n,char word[])
 
-    printf("\n\t\t Sorting Relationship\n");
-   sortRel(filerows, peopName, peopGen, peopAge, peopDob);
-    printTable(peopName, peopGen, peopAge, peopDob);
+//search(peopName,filerows,"Williams-");
+//     printf("\t\t Sorting Age\n");
+//    sortAge(filerows, peopName, peopGen, peopAge, peopDob);
+//     printTable(peopName, peopGen, peopAge, peopDob);
+
+//     printf("\n\t\t Sorting Relationship\n");
+//    sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+//     printTable(peopName, peopGen, peopAge, peopDob);
         
-    printf("\n\t\t Sorting Names\n");
-    sortName(filerows, peopName, peopGen, peopAge, peopDob);
-    printTable(peopName, peopGen, peopAge, peopDob);
+//     printf("\n\t\t Sorting Names\n");
+//     sortName(filerows, peopName, peopGen, peopAge, peopDob);
+//     printTable(peopName, peopGen, peopAge, peopDob);
 
-    printf("\n\t\t Sorting Dates\n");
-    sortDate(filerows, peopName, peopGen, peopAge, peopDob);
-    printTable(peopName, peopGen, peopAge, peopDob);
+//     printf("\n\t\t Sorting Dates\n");
+//     sortDate(filerows, peopName, peopGen, peopAge, peopDob);
+//     printTable(peopName, peopGen, peopAge, peopDob);
 
 
     return 0;
@@ -393,4 +402,60 @@ int checkLeap(int yr)
         leap = 1;
 
     return leap;
+}
+
+int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgt[MAXLEN], int first, int last)
+{
+    int loc = -1;
+    if (first <= last)
+    {
+        int mid = (first+last)/2;
+        //printf("%d\n",mid);
+        if (strcmp(peopName[MAXR][LAST],tgt)==0)
+        {
+            printf("loc = mid [%d]\n",mid);
+            printf("\t%d\n",mid);
+
+            return mid;
+        }
+        else if (strcmp(peopName[MAXR][LAST],tgt) < 0)
+        {
+            printf("Calling upper half binsearch with mid+1 (%d) and last (%d)\n",mid+1,last);
+            binsearch(peopName, tgt, mid+1, last);
+            printf("\t\t%d\n",mid+1);
+
+        }
+        else if (strcmp(peopName[MAXR][LAST],tgt) > 0)
+        {
+            printf("Calling lower half binsearch with first (%d) and mid-1 (%d)\n",first, mid-1);
+            binsearch(peopName, tgt, first, mid-1);
+            printf("\t\t\t%d\n",mid);
+
+        }
+    }
+
+    else
+        return loc;
+
+    //printf("\t%d",mid);
+}
+
+void search(char string[MAXR][MAXC][MAXLEN],int n,char word[])
+{
+    int lb, mid, ub;
+    lb = 0;                             //lower bound to 0
+    ub = n;                             //upper bound to n
+    do
+    {
+        mid = (lb + ub) / 2;             //finding the mid of the array
+        if ((strcmp(word,string[mid][FIRST]))<0)       //compare the word with mid
+            ub = mid - 1;                          //if small then decrement ub
+        else if ((strcmp(word,string[mid][FIRST]))>0)
+            lb = mid + 1;                          //if greater then increment lb
+     /*repeat the process till lb doesn't becomes ub and string is found */   
+    } while ((strcmp(word,string[mid][FIRST])!=0) && lb <= ub);
+    if ((strcmp(word,string[mid][FIRST]))==0)              //if string is found
+          printf("SEARCH SUCCESSFUL \n");
+    else                                        //if not found
+          printf("SEARCH FAILED \n");
 }
