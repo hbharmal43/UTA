@@ -11,16 +11,14 @@
 #include <string.h>
 #include <ctype.h>
 
-
-
-//Constants
+// Constants
 const int REL = 0;
 const int LAST = 1;
 const int FIRST = 2;
 const int DY = 0;
 const int MO = 1;
 const int YR = 2;
-//Max constants
+// Max constants
 const int MAXR = 25;
 const int MAXC = 3;
 const int MAXLEN = 35;
@@ -34,20 +32,20 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
 void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortAge(int k, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
-void sortName(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
-void sortDate(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
-int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgt[MAXLEN], int first, int last);
-void search(char string[MAXR][MAXC][MAXLEN],int n,char word[]);
+void sortName(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
+void sortDate(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
+int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last);
 
+void search(char string[MAXR][MAXC][MAXLEN], int n, char word[]);
 
 int main(int argc, char *argv[])
 {
-    //Data Arrays
+    // Data Arrays
 
-    char peopName[MAXR][MAXC][MAXLEN]; //contains first name and last name
-    char peopGen[MAXR];                //contains people's gender
-    double peopAge[MAXR];              //contains people's Age
-    int peopDob[MAXR][MAXC];           //contains people's Date of Birth
+    char peopName[MAXR][MAXC][MAXLEN]; // contains first name and last name
+    char peopGen[MAXR];                // contains people's gender
+    double peopAge[MAXR];              // contains people's Age
+    int peopDob[MAXR][MAXC];           // contains people's Date of Birth
 
     char filename[20] = "people.txt";
     int i = 0;
@@ -76,8 +74,8 @@ int main(int argc, char *argv[])
     while (!feof(file))
     {
 
-        fscanf(file, "%s %lf %c %d %d %d %[^,]%c %[^\n]", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast,&comma, &tempFirst);   
-         if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
+        fscanf(file, "%s %lf %c %d %d %d %[^,]%c %[^\n]", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast, &comma, &tempFirst);
+        if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
         {
             strcpy(peopName[i][REL], tempRelation);
             peopAge[i] = tempAge;
@@ -96,32 +94,36 @@ int main(int argc, char *argv[])
     }
     // printTable(peopName, peopGen, peopAge, peopDob);
 
-    //swap(1, peopName, peopGen, peopAge, peopDob);
-    // BubbleSortDay(peopAge,filerows);
+    // swap(1, peopName, peopGen, peopAge, peopDob);
+    //  BubbleSortDay(peopAge,filerows);
     printTable(peopName, peopGen, peopAge, peopDob);
-//int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgt[MAXLEN], int first, int last)
- char test[20] = "Joe";
-binsearch(peopName,"Joe",0,filerows-1);
-// printf("%d",result);
-//void search(char string[MAXR][MAXC][MAXLEN],int n,char word[])
+    // int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgt[MAXLEN], int first, int last)
+    char testL[20] = "Joe";
+    char testF[20] = "Ali";
 
-//search(peopName,filerows,"Williams-");
-//     printf("\t\t Sorting Age\n");
-//    sortAge(filerows, peopName, peopGen, peopAge, peopDob);
-//     printTable(peopName, peopGen, peopAge, peopDob);
+    // binsearch(peopName, test, 0, filerows - 1);
+    // printf("%d",result);
+    // void search(char string[MAXR][MAXC][MAXLEN],int n,char word[])
+    // int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last)
+    int result = binsearch(peopName, "Miller", "Thea", 0, filerows - 1);
+    printf("\n%d\n", result);
 
-//     printf("\n\t\t Sorting Relationship\n");
-//    sortRel(filerows, peopName, peopGen, peopAge, peopDob);
-//     printTable(peopName, peopGen, peopAge, peopDob);
-        
-//     printf("\n\t\t Sorting Names\n");
-//     sortName(filerows, peopName, peopGen, peopAge, peopDob);
-//     printTable(peopName, peopGen, peopAge, peopDob);
+    // search(peopName,filerows,"Williams-");
+    //      printf("\t\t Sorting Age\n");
+    //     sortAge(filerows, peopName, peopGen, peopAge, peopDob);
+    //      printTable(peopName, peopGen, peopAge, peopDob);
 
-//     printf("\n\t\t Sorting Dates\n");
-//     sortDate(filerows, peopName, peopGen, peopAge, peopDob);
-//     printTable(peopName, peopGen, peopAge, peopDob);
+    //     printf("\n\t\t Sorting Relationship\n");
+    //    sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+    //     printTable(peopName, peopGen, peopAge, peopDob);
 
+    //     printf("\n\t\t Sorting Names\n");
+    //     sortName(filerows, peopName, peopGen, peopAge, peopDob);
+    //     printTable(peopName, peopGen, peopAge, peopDob);
+
+    //     printf("\n\t\t Sorting Dates\n");
+    //     sortDate(filerows, peopName, peopGen, peopAge, peopDob);
+    //     printTable(peopName, peopGen, peopAge, peopDob);
 
     return 0;
 }
@@ -134,27 +136,25 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
     char peopGenTemp;
     double peopAgeTemp;
     int peopDobDay, peopDobMonth, peopDobYear;
-    //Swapping peopName array elements
-    //Swapping FirstName
-    strcpy(peopFirstNameTemp, peopName[rw][FIRST]);       //Store rw index firstName in temp
+    // Swapping peopName array elements
+    // Swapping FirstName
+    strcpy(peopFirstNameTemp, peopName[rw][FIRST]);       // Store rw index firstName in temp
     strcpy(peopName[rw][FIRST], peopName[rw + 1][FIRST]); // Store rw+1 data in rw element
-    strcpy(peopName[rw + 1][FIRST], peopFirstNameTemp);   //Store temp
-    //Swapping Lastname
-    strcpy(peopLastNameTemp, peopName[rw][LAST]);       //Store rw index lastName in temp
+    strcpy(peopName[rw + 1][FIRST], peopFirstNameTemp);   // Store temp
+    // Swapping Lastname
+    strcpy(peopLastNameTemp, peopName[rw][LAST]);       // Store rw index lastName in temp
     strcpy(peopName[rw][LAST], peopName[rw + 1][LAST]); // Store rw+1 data in rw element
-    strcpy(peopName[rw + 1][LAST], peopLastNameTemp);   //Store temp
-    //swapping relationship
-    strcpy(peopRelationTemp, peopName[rw][REL]);       //Store rw index lastName in temp
+    strcpy(peopName[rw + 1][LAST], peopLastNameTemp);   // Store temp
+    // swapping relationship
+    strcpy(peopRelationTemp, peopName[rw][REL]);      // Store rw index lastName in temp
     strcpy(peopName[rw][REL], peopName[rw + 1][REL]); // Store rw+1 data in rw element
     strcpy(peopName[rw + 1][REL], peopRelationTemp);
-    
-    
-    
-    //swapping Age
+
+    // swapping Age
     peopAgeTemp = peopAge[rw];     // storing rw age in temp
-    peopAge[rw] = peopAge[rw + 1]; //storing rw age in rw+1 age
+    peopAge[rw] = peopAge[rw + 1]; // storing rw age in rw+1 age
     peopAge[rw + 1] = peopAgeTemp; // storing tem age in rw age
-    //swawpping Gender
+    // swawpping Gender
     peopGenTemp = peopGen[rw];
     peopGen[rw] = peopGen[rw + 1];
     peopGen[rw + 1] = peopGenTemp;
@@ -166,7 +166,7 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
     peopDobMonth = peopDob[rw][MO];
     peopDob[rw][MO] = peopDob[rw + 1][MO];
     peopDob[rw + 1][MO] = peopDobMonth;
-    //swapping year
+    // swapping year
     peopDobYear = peopDob[rw][YR];
     peopDob[rw][YR] = peopDob[rw + 1][YR];
     peopDob[rw + 1][YR] = peopDobYear;
@@ -177,9 +177,8 @@ void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[],
     printf("==============================================================================================================");
     printf("\nRelationship  \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
     for (int k = 0; k < filerows; k++)
-    {   //printf("%s",toupper(peopName[k][REL][0]));
+    { // printf("%s",toupper(peopName[k][REL][0]));
         printf("%-15s  %4.2f %7c %12d/%d/%d \t %-20s %-20s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
-
     }
     printf("==============================================================================================================");
 }
@@ -209,97 +208,95 @@ void sortAge(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peo
     }
 }
 
- void sortRel(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
+void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
     // printf("%c\n",peopGen[0]);
     // printf("%c\n",peopGen[1]);
     // printf("%c\n",peopGen[2]);
 
-for (int step = 0; step < size - 1; step++)
+    for (int step = 0; step < size - 1; step++)
     {
         // printf("\n<sortAge> Pass = %d\n",step);
         // printTable(peopName, peopGen, peopAge, peopDob);
         // loop to compare array elements
         for (int i = 0; i < size - step - 1; i++)
         {
-            //printf("\n<sortAge> I = %d\n",i);
-            // compare two adjacent elements
-            //printf("%s and %s\n",peopName[i],peopName[i+1]);
-            // change > to < to sort in descending order
-            // printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
-            // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
-            if (strcmp(peopName[i][REL],peopName[i + 1][REL])>0)
+            // printf("\n<sortAge> I = %d\n",i);
+            //  compare two adjacent elements
+            // printf("%s and %s\n",peopName[i],peopName[i+1]);
+            //  change > to < to sort in descending order
+            //  printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
+            //  printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
+            if (strcmp(peopName[i][REL], peopName[i + 1][REL]) > 0)
             {
                 swap(i, peopName, peopGen, peopAge, peopDob);
-
             }
         }
     }
 }
 
- void sortName(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
+void sortName(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
     // printf("%c\n",peopGen[0]);
     // printf("%c\n",peopGen[1]);
     // printf("%c\n",peopGen[2]);
 
-for (int step = 0; step < size - 1; step++)
+    for (int step = 0; step < size - 1; step++)
     {
         // printf("\n<sortAge> Pass = %d\n",step);
         // printTable(peopName, peopGen, peopAge, peopDob);
         // loop to compare array elements
         for (int i = 0; i < size - step - 1; i++)
         {
-            //printf("\n<sortAge> I = %d\n",i);
-            // compare two adjacent elements
-            //printf("%s and %s\n",peopName[i],peopName[i+1]);
-            // change > to < to sort in descending order
-            // printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
-            // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
-            if (strcmp(peopName[i][LAST],peopName[i + 1][LAST])<0 )
+            // printf("\n<sortAge> I = %d\n",i);
+            //  compare two adjacent elements
+            // printf("%s and %s\n",peopName[i],peopName[i+1]);
+            //  change > to < to sort in descending order
+            //  printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
+            //  printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
+            if (strcmp(peopName[i][LAST], peopName[i + 1][LAST]) < 0)
             {
-                //printf("what");
+                // printf("what");
                 swap(i, peopName, peopGen, peopAge, peopDob);
-
             }
-            else{
-                if (strcmp(peopName[i][FIRST],peopName[i + 1][FIRST])>0)
+            else
             {
-                //printf("what");
-                swap(i, peopName, peopGen, peopAge, peopDob);
-
-            }
+                if (strcmp(peopName[i][FIRST], peopName[i + 1][FIRST]) > 0)
+                {
+                    // printf("what");
+                    swap(i, peopName, peopGen, peopAge, peopDob);
+                }
             }
         }
     }
 }
 
- void sortDate(int size ,char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
+void sortDate(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
     // printf("%c\n",peopGen[0]);
     // printf("%c\n",peopGen[1]);
     // printf("%c\n",peopGen[2]);
 
-for (int step = 0; step < size - 1; step++)
+    for (int step = 0; step < size - 1; step++)
     {
         // printf("\n<sortAge> Pass = %d\n",step);
         // printTable(peopName, peopGen, peopAge, peopDob);
         // loop to compare array elements
         for (int i = 0; i < size - step - 1; i++)
         {
-            //printf("\n<sortAge> I = %d\n",i);
-            // compare two adjacent elements
-            //printf("%s and %s\n",peopName[i],peopName[i+1]);
-            // change > to < to sort in descending order
-            // printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
-            // printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
-            if (peopDob[i][MO]>peopDob[i+1][MO])
-            {   
+            // printf("\n<sortAge> I = %d\n",i);
+            //  compare two adjacent elements
+            // printf("%s and %s\n",peopName[i],peopName[i+1]);
+            //  change > to < to sort in descending order
+            //  printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
+            //  printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
+            if (peopDob[i][MO] > peopDob[i + 1][MO])
+            {
                 swap(i, peopName, peopGen, peopAge, peopDob);
             }
-            else if (peopDob[i][MO]==peopDob[i+1][MO] && peopDob[i][DY]>peopDob[i+1][DY])
+            else if (peopDob[i][MO] == peopDob[i + 1][MO] && peopDob[i][DY] > peopDob[i + 1][DY])
             {
-                swap(i, peopName, peopGen, peopAge, peopDob);          
+                swap(i, peopName, peopGen, peopAge, peopDob);
             }
         }
     }
@@ -327,7 +324,7 @@ int checkDate(int day, int month, int year)
     else if ((day < 1) || (day > 31))
         dateInvalid = 3;
 
-    /* 
+    /*
      * At this point, if dateInvalid 1= 0, then there is an error
      * Therefore, we only want to continue if there are no errors
      * At this point, we now need to check if days and months are valid with each other
@@ -349,10 +346,10 @@ int checkDate(int day, int month, int year)
             }
             else // it is a leap year
                 if (day > 29)
-                dateInvalid = 6;
+                    dateInvalid = 6;
         }
     }
-    //errorMsgs(dateInvalid);
+    // errorMsgs(dateInvalid);
     return dateInvalid;
 }
 
@@ -386,8 +383,8 @@ void errorMsgs(int flag)
 int checkLeap(int yr)
 {
     /*
-     * A year is a leap year if 
-     * it is divisible by 4 and NOT divisible by 100 
+     * A year is a leap year if
+     * it is divisible by 4 and NOT divisible by 100
      * UNLESS it is divisible by 400
      */
     int leap = 0;
@@ -404,58 +401,61 @@ int checkLeap(int yr)
     return leap;
 }
 
-int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgt[MAXLEN], int first, int last)
+int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last)
 {
     int loc = -1;
     if (first <= last)
     {
-        int mid = (first+last)/2;
-        //printf("%d\n",mid);
-        if (strcmp(peopName[MAXR][LAST],tgt)==0)
+        int mid = (first + last) / 2;
+        if (strcmp(peopName[mid][LAST], tgtL) == 0)
         {
-            printf("loc = mid [%d]\n",mid);
-            printf("\t%d\n",mid);
-
+            if (strcmp(peopName[mid][FIRST], tgtF) == 0)
+            {
+            //printf("loc = mid [%d]\n",mid);
             return mid;
+            }
+            else if (strcmp(peopName[mid][FIRST], tgtF) > 0)
+            {
+                binsearch(peopName, tgtL, tgtF, mid + 1, last);
+            }
+            else
+            {
+                binsearch(peopName, tgtL, tgtF, first, mid - 1);
+            }
         }
-        else if (strcmp(peopName[MAXR][LAST],tgt) < 0)
+        else if ((strcmp(peopName[mid][LAST], tgtL) > 0))
         {
-            printf("Calling upper half binsearch with mid+1 (%d) and last (%d)\n",mid+1,last);
-            binsearch(peopName, tgt, mid+1, last);
-            printf("\t\t%d\n",mid+1);
-
+            binsearch(peopName, tgtL, tgtF, mid + 1, last);
         }
-        else if (strcmp(peopName[MAXR][LAST],tgt) > 0)
+        else
         {
-            printf("Calling lower half binsearch with first (%d) and mid-1 (%d)\n",first, mid-1);
-            binsearch(peopName, tgt, first, mid-1);
-            printf("\t\t\t%d\n",mid);
-
+            binsearch(peopName, tgtL, tgtF, first, mid - 1);
         }
+    printf("%d\n",mid);
     }
 
     else
+        printf("%s",tgtF);
+        //printf("%d",mid);
         return loc;
-
-    //printf("\t%d",mid);
 }
 
-void search(char string[MAXR][MAXC][MAXLEN],int n,char word[])
+void search(char string[MAXR][MAXC][MAXLEN], int n, char word[])
 {
     int lb, mid, ub;
-    lb = 0;                             //lower bound to 0
-    ub = n;                             //upper bound to n
+    lb = 0; // lower bound to 0
+    ub = n; // upper bound to n
     do
     {
-        mid = (lb + ub) / 2;             //finding the mid of the array
-        if ((strcmp(word,string[mid][FIRST]))<0)       //compare the word with mid
-            ub = mid - 1;                          //if small then decrement ub
-        else if ((strcmp(word,string[mid][FIRST]))>0)
-            lb = mid + 1;                          //if greater then increment lb
-     /*repeat the process till lb doesn't becomes ub and string is found */   
-    } while ((strcmp(word,string[mid][FIRST])!=0) && lb <= ub);
-    if ((strcmp(word,string[mid][FIRST]))==0)              //if string is found
-          printf("SEARCH SUCCESSFUL \n");
-    else                                        //if not found
-          printf("SEARCH FAILED \n");
+        mid = (lb + ub) / 2;                        // finding the mid of the array
+        if ((strcmp(word, string[mid][FIRST])) < 0) // compare the word with mid
+            ub = mid - 1;                           // if small then decrement ub
+        else if ((strcmp(word, string[mid][FIRST])) > 0)
+            lb = mid + 1; // if greater then increment lb
+        /*repeat the process till lb doesn't becomes ub and string is found */
+    } while ((strcmp(word, string[mid][FIRST]) != 0) && lb <= ub);
+    if ((strcmp(word, string[mid][FIRST])) == 0) // if string is found
+        printf("SEARCH SUCCESSFUL \n");
+    else // if not found
+        printf("SEARCH FAILED \n");
 }
