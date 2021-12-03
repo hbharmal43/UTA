@@ -34,9 +34,9 @@ void sortAge(int k, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAg
 void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortName(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortDate(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
-int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last);
+//int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last);
+int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], int first, int last);
 
-void search(char string[MAXR][MAXC][MAXLEN], int n, char word[]);
 
 int main(int argc, char *argv[])
 {
@@ -98,15 +98,15 @@ int main(int argc, char *argv[])
     //  BubbleSortDay(peopAge,filerows);
     printTable(peopName, peopGen, peopAge, peopDob);
     // int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgt[MAXLEN], int first, int last)
-    char testL[20] = "Joe";
+    char test[20] = "Joe";
     char testF[20] = "Ali";
 
-    // binsearch(peopName, test, 0, filerows - 1);
+    binsearch(peopName, test, 0, filerows - 1);
     // printf("%d",result);
     // void search(char string[MAXR][MAXC][MAXLEN],int n,char word[])
     // int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last)
-    int result = binsearch(peopName, "Miller", "Thea", 0, filerows - 1);
-    printf("\n%d\n", result);
+    // int result = binsearch(peopName, "Colcord", "John Nathan", 0, filerows - 1);
+    // printf("\n%d\n", result);
 
     // search(peopName,filerows,"Williams-");
     //      printf("\t\t Sorting Age\n");
@@ -401,7 +401,7 @@ int checkLeap(int yr)
     return leap;
 }
 
-int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last)
+/*int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last)
 {
     int loc = -1;
     if (first <= last)
@@ -431,31 +431,38 @@ int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MA
         {
             binsearch(peopName, tgtL, tgtF, first, mid - 1);
         }
-    printf("%d\n",mid);
+    //printf("%d\n",mid);
     }
 
     else
-        printf("%s",tgtF);
+        //printf("%s",tgtF);
         //printf("%d",mid);
         return loc;
 }
-
-void search(char string[MAXR][MAXC][MAXLEN], int n, char word[])
+*/
+int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], int first, int last)
 {
-    int lb, mid, ub;
-    lb = 0; // lower bound to 0
-    ub = n; // upper bound to n
-    do
+    int loc = -1;
+    if (first <= last)
     {
-        mid = (lb + ub) / 2;                        // finding the mid of the array
-        if ((strcmp(word, string[mid][FIRST])) < 0) // compare the word with mid
-            ub = mid - 1;                           // if small then decrement ub
-        else if ((strcmp(word, string[mid][FIRST])) > 0)
-            lb = mid + 1; // if greater then increment lb
-        /*repeat the process till lb doesn't becomes ub and string is found */
-    } while ((strcmp(word, string[mid][FIRST]) != 0) && lb <= ub);
-    if ((strcmp(word, string[mid][FIRST])) == 0) // if string is found
-        printf("SEARCH SUCCESSFUL \n");
-    else // if not found
-        printf("SEARCH FAILED \n");
+        int mid = (first+last)/2;
+        printf("%d\n",mid);
+        if (strcmp(peopName[mid][LAST], tgtL) == 0)
+        {
+            printf("loc = mid [%d]\n",mid);
+            return mid;
+        }
+        else if (strcmp(peopName[mid][LAST], tgtL) > 0)
+        {
+            printf("Calling upper half binsearch with mid+1 (%d) and last (%d)\n",mid+1,last);
+            binsearch(peopName, tgtL,  mid + 1, last);
+        }
+        else // (arr[mid] > tgt)
+        {
+            printf("Calling lower half binsearch with first (%d) and mid-1 (%d)\n",first, mid-1);
+            binsearch(peopName, tgtL,  first, mid - 1);
+        }
+    }
+    else
+        return loc;
 }
