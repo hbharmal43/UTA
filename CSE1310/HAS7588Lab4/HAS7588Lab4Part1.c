@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
     while (!feof(file))
     {
 
-        fscanf(file, "%s %lf %c %d %d %d %s%c %[^\n]", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast,&comma, &tempFirst);   
+        fscanf(file, "%s %lf %c %d %d %d %[^,]%c %[^\n]", &tempRelation, &tempAge, &tempGender, &tempDay, &tempMonth, &tempYear, &tempLast,&comma, &tempFirst);   
          if ((tempAge > 0) && (checkGender(tempGender)) && (!checkDate(tempDay, tempMonth, tempYear)))
         {
             strcpy(peopName[i][REL], tempRelation);
