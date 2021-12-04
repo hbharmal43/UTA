@@ -1,0 +1,254 @@
+
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+
+==============================================================================================================
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+
+==============================================================================================================
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+
+==============================================================================================================
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+
+==============================================================================================================
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+
+==============================================================================================================
+index of the element you searched for is = 6
+
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+
+==============================================================================================================
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+
+==============================================================================================================
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+
+==============================================================================================================
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+
+==============================================================================================================
+==============================================================================================================
+Relationship  	 Age 	 Gender 	 DD/MM/YY	Lastname	Firstname
+friend           16.00       M            1/1/2000 	 Joe                  Ali                 
+brother          15.00       M            7/1/2006 	 Findlay              XAE12               
+freind           17.00       U            9/2/2004 	 Duke-Regan           Jace                
+spouse           71.00       M           12/2/1950 	 Colcord              John Nathan         
+brother-in-law   58.00       M           23/2/1963 	 Mayor-Domo           Tim                 
+goddaughter      0.75       F           13/3/2021 	 Lane                 Holly               
+friend           18.00       F            1/4/2003 	 Moran                Mahima              
+sister           17.00       M            2/4/2004 	 Graves               Faya                
+uncle            45.00       M           10/4/1981 	 Schwartz             Arnold              
+hero             18.00       M            9/5/1955 	 The Frog             Kermit              
+sister           52.50       F           19/5/1969 	 McKay                Chris               
+previous_boss    41.00       M           18/7/1979 	 Ebrahimi             Ahmed               
+colleague        28.00       U            8/8/2001 	 Vetenari-Vines       Dale                
+aunt             37.00       F           13/8/1984 	 Miller               Thea                
+faculty_mentor   48.00       N            9/9/1951 	 Harbison             Dr. Karan           
+grandmother      102.00       F           20/9/1902 	 Williams             Mildred Carter McKay
+mother           74.00       F           23/9/1935 	 Williams-Schou       Sandra Carter       
+friend           63.00       N           29/9/1958 	 Son Jae              Stanley             
+brother          58.00       M           15/10/1969 	 Matheny              Albert              
+great-Uncle      42.00       M           16/11/1975 	 Philip               Broderick           
+gym_buddy        20.00       M           23/12/2001 	 Mccray               Will                
+
+==============================================================================================================
+index of the element you searched for is = 6

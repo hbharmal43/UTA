@@ -35,8 +35,7 @@ void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peo
 void sortName(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortDate(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last);
-void printOutTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC],FILE * outFile);
-
+void printOutTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC], FILE *outFile);
 
 int main(int argc, char *argv[])
 {
@@ -59,11 +58,15 @@ int main(int argc, char *argv[])
     int tempMonth = 0;
     int tempYear = 0;
     char comma;
+    char srch_Last[25];
+    char srch_first[25];
     char fileout[20];
     strcpy(filename, argv[1]);
-    strcpy(fileout,argv[2]);
+    strcpy(fileout, argv[2]);
+    strcpy(srch_Last,argv[3]);
+    strcpy(srch_first,argv[4]);
     FILE *file = fopen(filename, "r");
-    FILE *outFile=fopen(fileout,"a");
+    FILE *outFile = fopen(fileout, "a");
 
     if (file == NULL)
     {
@@ -97,31 +100,34 @@ int main(int argc, char *argv[])
     }
 
     printTable(peopName, peopGen, peopAge, peopDob);
-// void printOutTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC],FILE * outFile);
-printOutTable(peopName, peopGen, peopAge, peopDob,outFile);
+    printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
 
-    //char search
-         printf("\t\t Sorting Age\n");
-        sortAge(filerows, peopName, peopGen, peopAge, peopDob);
-        printTable(peopName, peopGen, peopAge, peopDob);
+    // char search
+    printf("\t\t Sorting Age\n");
+    sortAge(filerows, peopName, peopGen, peopAge, peopDob);
+    printTable(peopName, peopGen, peopAge, peopDob);
+    printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
 
-        printf("\n\t\t Sorting Relationship\n");
-       sortRel(filerows, peopName, peopGen, peopAge, peopDob);
-        printTable(peopName, peopGen, peopAge, peopDob);
+    printf("\n\t\t Sorting Relationship\n");
+    sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+    printTable(peopName, peopGen, peopAge, peopDob);
+    printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
 
-        printf("\n\t\t Sorting Names\n");
-        sortName(filerows, peopName, peopGen, peopAge, peopDob);
-        printTable(peopName, peopGen, peopAge, peopDob);
+    printf("\n\t\t Sorting Names\n");
+    sortName(filerows, peopName, peopGen, peopAge, peopDob);
+    printTable(peopName, peopGen, peopAge, peopDob);
+    printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
 
-    int s = binsearch(peopName,"Joe","Ali",0,filerows-1);
- 
+    int s = binsearch(peopName,srch_Last,srch_first, 0, filerows - 1);
 
+    printf("\n\t\t Sorting Dates\n");
+    sortDate(filerows, peopName, peopGen, peopAge, peopDob);
+    printTable(peopName, peopGen, peopAge, peopDob);
+    printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
 
-        printf("\n\t\t Sorting Dates\n");
-        sortDate(filerows, peopName, peopGen, peopAge, peopDob);
-        printTable(peopName, peopGen, peopAge, peopDob);
+    printf("\nindex of the element you searched for is = %d\n", s);
+    fprintf(outFile, "\nindex of the element you searched for is = %d\n", s);
 
-    printf("\nindex of the element you searched for is = %d\n",s);
     return 0;
 }
 
@@ -171,13 +177,13 @@ void swap(int rw, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[
 
 void printTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
 {
-    printf("==============================================================================================================");
+    printf("\n==============================================================================================================");
     printf("\nRelationship  \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
     for (int k = 0; k < filerows; k++)
     { // printf("%s",toupper(peopName[k][REL][0]));
         printf("%-15s  %4.2f %7c %12d/%d/%d \t %-20s %-20s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
     }
-    printf("==============================================================================================================");
+    printf("==============================================================================================================\n");
 }
 
 void sortAge(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC])
@@ -253,7 +259,7 @@ void sortName(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double pe
             //  printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
             if (strcmp(peopName[i][LAST], peopName[i + 1][LAST]) > 0)
             {
-                //printf("\n%s\n",peopName[i][LAST]);
+                // printf("\n%s\n",peopName[i][LAST]);
                 swap(i, peopName, peopGen, peopAge, peopDob);
             }
             else if (strcmp(peopName[i][LAST], peopName[i + 1][LAST]) == 0)
@@ -261,11 +267,10 @@ void sortName(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double pe
                 if (strcmp(peopName[i][LAST], peopName[i + 1][LAST]) > 0)
                 {
                     // printf("what");
-                    //printf("\n%s\n",peopName[i][LAST]);
+                    // printf("\n%s\n",peopName[i][LAST]);
                     swap(i, peopName, peopGen, peopAge, peopDob);
                 }
             }
-
         }
     }
 }
@@ -402,36 +407,35 @@ int checkLeap(int yr)
 
 int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last)
 {
-    //int loc = -1;
+    // int loc = -1;
     if (first <= last)
     {
         int mid = (first + last) / 2;
         if (strcmp(peopName[mid][LAST], tgtL) == 0)
         {
-            if (strcmp(peopName[mid][FIRST],tgtF)==0)
+            if (strcmp(peopName[mid][FIRST], tgtF) == 0)
                 return mid;
         }
         if ((strcmp(peopName[mid][LAST], tgtL) > 0))
         {
-            return binsearch(peopName, tgtL, tgtF,first, mid - 1);
-            
+            return binsearch(peopName, tgtL, tgtF, first, mid - 1);
         }
-        return binsearch(peopName, tgtL, tgtF, mid+1, last);
-        
-    //printf("%d\n",mid);
+        return binsearch(peopName, tgtL, tgtF, mid + 1, last);
+
+        // printf("%d\n",mid);
     }
-        //printf("%s",tgtF);
-        //printf("%d",mid);
+    // printf("%s",tgtF);
+    // printf("%d",mid);
     return -1;
 }
 
-void printOutTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC],FILE * outFile)
+void printOutTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC], FILE *outFile)
 {
-    fprintf(outFile,"==============================================================================================================");
-    fprintf(outFile,"\nRelationship  \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
+    fprintf(outFile, "\n==============================================================================================================");
+    fprintf(outFile, "\nRelationship  \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
     for (int k = 0; k < filerows; k++)
     { // printf("%s",toupper(peopName[k][REL][0]));
-        fprintf(outFile,"%-15s  %4.2f %7c %12d/%d/%d \t %-20s %-20s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
+        fprintf(outFile, "%-15s  %4.2f %7c %12d/%d/%d \t %-20s %-20s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
     }
-    fprintf(outFile,"==============================================================================================================");
+    fprintf(outFile, "\n==============================================================================================================");
 }
