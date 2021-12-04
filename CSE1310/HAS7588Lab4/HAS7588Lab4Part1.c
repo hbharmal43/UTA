@@ -93,7 +93,6 @@ int main(int argc, char *argv[])
             peopDob[i][YR] = tempYear;
             strcpy(peopName[i][LAST], tempLast);
             strcpy(peopName[i][FIRST], tempFirst);
-            // toupper(peopName[i][REL][0]);
             i++;
             filerows = i;
         }
@@ -103,31 +102,38 @@ int main(int argc, char *argv[])
     printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
 
     // char search
-    printf("\t\t Sorting Age\n");
+    printf("\t\t\t\t\t\t Sorting Age");
+    fprintf(outFile,"\t\t\t\t\t\t Sorting Age");
     sortAge(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
     printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
 
-    printf("\n\t\t Sorting Relationship\n");
+    printf("\t\t\t\t\t\t Sorting Relationship");
+    fprintf(outFile,"\t\t\t\t\t\t Sorting Relationship");
     sortRel(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
     printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
 
-    printf("\n\t\t Sorting Names\n");
+    printf("\t\t\t\t\t\t Sorting Names");
+    fprintf(outFile,"\t\t\t\t\t\t Sorting Names");
     sortName(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
     printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
 
     int s = binsearch(peopName,srch_Last,srch_first, 0, filerows - 1);
 
-    printf("\n\t\t Sorting Dates\n");
+    printf("\t\t\t\t\t\t Sorting Dates");
+    fprintf(outFile,"\t\t\t\t\t\t Sorting Dates");
     sortDate(filerows, peopName, peopGen, peopAge, peopDob);
     printTable(peopName, peopGen, peopAge, peopDob);
     printOutTable(peopName, peopGen, peopAge, peopDob, outFile);
-
-    printf("\nindex of the element you searched for is = %d\n", s);
-    fprintf(outFile, "\nindex of the element you searched for is = %d\n", s);
-
+    if (s >= 0){
+    printf("\nindex of the element %s and %s you searched for is = %d\n",srch_Last,srch_first, s);
+    fprintf(outFile, "\nindex of the element %s and %s you searched for is = %d\n",srch_Last,srch_first, s);
+    }
+    else{
+        printf("your input is invalid and has returned %d",s);
+    }
     return 0;
 }
 
