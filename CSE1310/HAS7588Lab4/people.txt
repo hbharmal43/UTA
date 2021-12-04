@@ -14,13 +14,13 @@ spouse 71 M 12 2 1950 Colcord, John Nathan
 stepbrother 54 U 31 9 1967 Manous, Brady
 grandmother 102 F 20 9 1902 Williams, Mildred Carter McKay
 faculty_mentor 48 N 9 9 1951 Harbison, Dr. Karan
-Friend 16 M 01 01 2000 Joe, Ali
-Friend 18 F 01 04 2003 Moran, Mahima
-Freind 17 U 09 02 2004 Duke-Regan, Jace
-Sister 17 M 02 04 2004 Graves, Faya
-Brother 15 M 07 01 2006 Findlay, XAE12
-Gym_buddy 20 M 23 12 2001 Mccray, Will
-Uncle 38 m 30 04 1983 Correa, Louis
-Uncle 45 M 10 04 1981 Schwartz, Arnold
-Aunt 37 F 13 08 1984 Miller, Thea
-Great-Uncle 42 M 16 11 1975 Philip, Broderick
+friend 16 M 01 01 2000 Joe, Ali
+friend 18 F 01 04 2003 Moran, Mahima
+freind 17 U 09 02 2004 Duke-Regan, Jace
+sister 17 M 02 04 2004 Graves, Faya
+brother 15 M 07 01 2006 Findlay, XAE12
+gym_buddy 20 M 23 12 2001 Mccray, Will
+uncle 38 m 30 04 1983 Correa, Louis
+uncle 45 M 10 04 1981 Schwartz, Arnold
+aunt 37 F 13 08 1984 Miller, Thea
+great-Uncle 42 M 16 11 1975 Philip, Broderick

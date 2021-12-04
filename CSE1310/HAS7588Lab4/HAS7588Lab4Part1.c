@@ -34,8 +34,8 @@ void sortAge(int k, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAg
 void sortRel(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortName(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
 void sortDate(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC]);
-//int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last);
-int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], int first, int last);
+int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last);
+void printOutTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC],FILE * outFile);
 
 
 int main(int argc, char *argv[])
@@ -59,8 +59,11 @@ int main(int argc, char *argv[])
     int tempMonth = 0;
     int tempYear = 0;
     char comma;
+    char fileout[20];
     strcpy(filename, argv[1]);
+    strcpy(fileout,argv[2]);
     FILE *file = fopen(filename, "r");
+    FILE *outFile=fopen(fileout,"a");
 
     if (file == NULL)
     {
@@ -92,39 +95,33 @@ int main(int argc, char *argv[])
             filerows = i;
         }
     }
-    // printTable(peopName, peopGen, peopAge, peopDob);
 
-    // swap(1, peopName, peopGen, peopAge, peopDob);
-    //  BubbleSortDay(peopAge,filerows);
     printTable(peopName, peopGen, peopAge, peopDob);
-    // int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgt[MAXLEN], int first, int last)
-    char test[20] = "Joe";
-    char testF[20] = "Ali";
+// void printOutTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC],FILE * outFile);
+printOutTable(peopName, peopGen, peopAge, peopDob,outFile);
 
-    binsearch(peopName, test, 0, filerows - 1);
-    // printf("%d",result);
-    // void search(char string[MAXR][MAXC][MAXLEN],int n,char word[])
-    // int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last)
-    // int result = binsearch(peopName, "Colcord", "John Nathan", 0, filerows - 1);
-    // printf("\n%d\n", result);
+    //char search
+         printf("\t\t Sorting Age\n");
+        sortAge(filerows, peopName, peopGen, peopAge, peopDob);
+        printTable(peopName, peopGen, peopAge, peopDob);
 
-    // search(peopName,filerows,"Williams-");
-    //      printf("\t\t Sorting Age\n");
-    //     sortAge(filerows, peopName, peopGen, peopAge, peopDob);
-    //      printTable(peopName, peopGen, peopAge, peopDob);
+        printf("\n\t\t Sorting Relationship\n");
+       sortRel(filerows, peopName, peopGen, peopAge, peopDob);
+        printTable(peopName, peopGen, peopAge, peopDob);
 
-    //     printf("\n\t\t Sorting Relationship\n");
-    //    sortRel(filerows, peopName, peopGen, peopAge, peopDob);
-    //     printTable(peopName, peopGen, peopAge, peopDob);
+        printf("\n\t\t Sorting Names\n");
+        sortName(filerows, peopName, peopGen, peopAge, peopDob);
+        printTable(peopName, peopGen, peopAge, peopDob);
 
-    //     printf("\n\t\t Sorting Names\n");
-    //     sortName(filerows, peopName, peopGen, peopAge, peopDob);
-    //     printTable(peopName, peopGen, peopAge, peopDob);
+    int s = binsearch(peopName,"Joe","Ali",0,filerows-1);
+ 
 
-    //     printf("\n\t\t Sorting Dates\n");
-    //     sortDate(filerows, peopName, peopGen, peopAge, peopDob);
-    //     printTable(peopName, peopGen, peopAge, peopDob);
 
+        printf("\n\t\t Sorting Dates\n");
+        sortDate(filerows, peopName, peopGen, peopAge, peopDob);
+        printTable(peopName, peopGen, peopAge, peopDob);
+
+    printf("\nindex of the element you searched for is = %d\n",s);
     return 0;
 }
 
@@ -254,19 +251,21 @@ void sortName(int size, char peopName[][MAXC][MAXLEN], char peopGen[], double pe
             //  change > to < to sort in descending order
             //  printf("\n<sortAge> peopAge[%d] = %lf\n",i,peopAge[i]);
             //  printf("\n<sortAge> peopAge[%d] = %lf\n",i+1,peopAge[i+1]);
-            if (strcmp(peopName[i][LAST], peopName[i + 1][LAST]) < 0)
+            if (strcmp(peopName[i][LAST], peopName[i + 1][LAST]) > 0)
             {
-                // printf("what");
+                //printf("\n%s\n",peopName[i][LAST]);
                 swap(i, peopName, peopGen, peopAge, peopDob);
             }
-            else
+            else if (strcmp(peopName[i][LAST], peopName[i + 1][LAST]) == 0)
             {
-                if (strcmp(peopName[i][FIRST], peopName[i + 1][FIRST]) > 0)
+                if (strcmp(peopName[i][LAST], peopName[i + 1][LAST]) > 0)
                 {
                     // printf("what");
+                    //printf("\n%s\n",peopName[i][LAST]);
                     swap(i, peopName, peopGen, peopAge, peopDob);
                 }
             }
+
         }
     }
 }
@@ -401,68 +400,38 @@ int checkLeap(int yr)
     return leap;
 }
 
-/*int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last)
+int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], char tgtF[MAXLEN], int first, int last)
 {
-    int loc = -1;
+    //int loc = -1;
     if (first <= last)
     {
         int mid = (first + last) / 2;
         if (strcmp(peopName[mid][LAST], tgtL) == 0)
         {
-            if (strcmp(peopName[mid][FIRST], tgtF) == 0)
-            {
-            //printf("loc = mid [%d]\n",mid);
-            return mid;
-            }
-            else if (strcmp(peopName[mid][FIRST], tgtF) > 0)
-            {
-                binsearch(peopName, tgtL, tgtF, mid + 1, last);
-            }
-            else
-            {
-                binsearch(peopName, tgtL, tgtF, first, mid - 1);
-            }
+            if (strcmp(peopName[mid][FIRST],tgtF)==0)
+                return mid;
         }
-        else if ((strcmp(peopName[mid][LAST], tgtL) > 0))
+        if ((strcmp(peopName[mid][LAST], tgtL) > 0))
         {
-            binsearch(peopName, tgtL, tgtF, mid + 1, last);
+            return binsearch(peopName, tgtL, tgtF,first, mid - 1);
+            
         }
-        else
-        {
-            binsearch(peopName, tgtL, tgtF, first, mid - 1);
-        }
+        return binsearch(peopName, tgtL, tgtF, mid+1, last);
+        
     //printf("%d\n",mid);
     }
-
-    else
         //printf("%s",tgtF);
         //printf("%d",mid);
-        return loc;
+    return -1;
 }
-*/
-int binsearch(char peopName[MAXR][MAXC][MAXLEN], char tgtL[MAXLEN], int first, int last)
+
+void printOutTable(char peopName[][MAXC][MAXLEN], char peopGen[], double peopAge[], int peopDob[][MAXC],FILE * outFile)
 {
-    int loc = -1;
-    if (first <= last)
-    {
-        int mid = (first+last)/2;
-        printf("%d\n",mid);
-        if (strcmp(peopName[mid][LAST], tgtL) == 0)
-        {
-            printf("loc = mid [%d]\n",mid);
-            return mid;
-        }
-        else if (strcmp(peopName[mid][LAST], tgtL) > 0)
-        {
-            printf("Calling upper half binsearch with mid+1 (%d) and last (%d)\n",mid+1,last);
-            binsearch(peopName, tgtL,  mid + 1, last);
-        }
-        else // (arr[mid] > tgt)
-        {
-            printf("Calling lower half binsearch with first (%d) and mid-1 (%d)\n",first, mid-1);
-            binsearch(peopName, tgtL,  first, mid - 1);
-        }
+    fprintf(outFile,"==============================================================================================================");
+    fprintf(outFile,"\nRelationship  \t Age \t Gender \t DD/MM/YY\tLastname\tFirstname\n");
+    for (int k = 0; k < filerows; k++)
+    { // printf("%s",toupper(peopName[k][REL][0]));
+        fprintf(outFile,"%-15s  %4.2f %7c %12d/%d/%d \t %-20s %-20s\n", peopName[k][REL], peopAge[k], peopGen[k], peopDob[k][DY], peopDob[k][MO], peopDob[k][YR], peopName[k][LAST], peopName[k][FIRST]);
     }
-    else
-        return loc;
+    fprintf(outFile,"==============================================================================================================");
 }
