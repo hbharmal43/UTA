@@ -3,7 +3,6 @@ Name:Hasnian Bharmal
 Student ID:1001937588
 */
 
-
 #include <stdio.h>
 #define BITS 8
 void ConvertDecimalToBinary(int d, char ch_array[]);
@@ -19,8 +18,6 @@ int main()
     int answer;
     char answer_ch[BITS + 1];
 
-    // ConvertDecimalToBinary(25, temp);
-    // printf("%s", temp);
 
     printf("\nBitwise Calculator\n\n");
     printf("Enter two base 10 values with a bitwise operator to see the decimal result\nand the binary result.\tThe format is\n\n");
@@ -30,16 +27,13 @@ int main()
     printf("\nThis calculator can used with &, |, ^, << and >>");
     printf("Please note that the spaces between numbers and operator is essential\nand the two entered values must be between 0 and 255\n\n");
 
-    while (digit == 1)
+    printf("Enter expression ");
+    scanf("%d %s%d", &num1, bitop, &num2);
+
+    while (num1 < 0 || num1 > 255 || num2 < 0 || num2 > 255)
     {
-        printf("Enter expression ");
+        printf("\nThe entered expression contains out of range values.\nPlease reenter the expression using values between 0 and 255.\n");
         scanf("%d %s%d", &num1, bitop, &num2);
-        if (num1 < 0 || num1 > 255 || num2 < 0 || num2 > 255)
-        {
-            printf("The entered expression contains out of range values.\nPlease reenter the expression using values between 0 and 255.");
-        }
-        else
-            digit = 0;
     }
     if (bitop[0] == '&')
     {
@@ -77,23 +71,26 @@ int main()
         printf("\n%d %s %d = %d\n", num1, bitop, num2, answer);
     }
     else
-        printf("Operator %s is not supported by this calculator", bitop);
-
-    printf("\nIn 8-bit base 2...\n");
+    printf("\nOperator %s is not supported by this calculator", bitop);
     ConvertDecimalToBinary(num2, num2_ch);
     ConvertDecimalToBinary(num1, num1_ch);
     ConvertDecimalToBinary(answer, answer_ch);
 
     if (bitop[0] == '&' || bitop[0] == '|' || bitop[0] == '^')
     {
+        printf("\nIn 8-bit base 2...\n");
         printf("\n %s\n", num1_ch);
         printf("%s\n", bitop);
         printf(" %s\n", num2_ch);
         printf(" ========");
         printf("\n %s\n", answer_ch);
     }
+    else if (!(bitop[0] == '&' || bitop[0] == '|' || bitop[0] == '^' || bitop[0] == '<' || bitop[0] == '>'))
+    {
+    }
     else
     {
+        printf("\nIn 8-bit base 2...\n");
         printf("\n%s   ", num1_ch);
         printf("%s ", bitop);
         printf("%d", num2);
