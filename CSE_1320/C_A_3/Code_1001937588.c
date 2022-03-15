@@ -7,6 +7,7 @@
 
 int rowCheck(int tempvalue[5][5]);
 int columnCheck(int tempvalue[5][5]);
+int diagonalCheck(int tempvalue[5][5]);
 void fillBingoCard(int temp[5][5]);
 void printBingoCard(int temp[5][5]);
 int pickNmber(int pickNumtemp[75], int cntr);
@@ -14,19 +15,15 @@ int verifyCard(int temp_2[5][5], int num);
 
 int main()
 {
-    int DUP[25];
+    int DUP[5];
     int bingo_card[5][5];
     int pickNum;
-    int j = 0;
-    int i = 0;
     int pickNumber[75];
-    int get;
     int p_Num;
     int cntr = 0;
     char input[15];
     int over = 0;
-    int row = 0;
-    int column = 0;
+
 
     srand(time(0));
     fillBingoCard(bingo_card);
@@ -63,25 +60,29 @@ int main()
         {
             if (verifyCard(bingo_card, p_Num) == 1)
             {
-                row = rowCheck(bingo_card);
-                column = columnCheck(bingo_card);
-                printf("\n\t---%d---\t\n", columnCheck(bingo_card));
+
                 printBingoCard(bingo_card);
-                if (row == 1 && column == 1)
+                if (rowCheck(bingo_card) == 1 && columnCheck(bingo_card) == 1)
                 {
                     printf("You filled out a row & column - BINGO!!!");
                     over = 1;
                 }
-                else if (column == 1)
+                else if (columnCheck(bingo_card) == 1)
                 {
 
                     printf("You filled out a column - BINGO!!!");
                     over = 1;
                 }
-                else if (row == 1)
+                else if (rowCheck(bingo_card) == 1)
                 {
                     printf("You filled out a row - BINGO!!!");
                     over = 1;
+                }
+                else if (diagonalCheck(bingo_card) == 1)
+                {
+                    printf("You filled out a diagnaol - BINGO!!!");
+                    over = 1;
+
                 }
             }
             else
@@ -102,7 +103,7 @@ int main()
 void fillBingoCard(int temp[5][5])
 {
     int vari;
-    int cols[5];
+    int DUP[5];
     for (int j = 0; j < 5; j++)
         for (int i = 0; i < 5; i++)
         {
@@ -111,7 +112,7 @@ void fillBingoCard(int temp[5][5])
             int cntr = 0;
             while (cntr < 5)
             {
-                if (cols[cntr] == vari)
+                if (DUP[cntr] == vari)
                 {
                     vari = rand() % 15 + (15 * j) + 1;
                     cntr = 0;
@@ -121,7 +122,7 @@ void fillBingoCard(int temp[5][5])
                     cntr++;
             }
             // printf("%d",vari);
-            cols[i] = vari;
+            DUP[i] = vari;
             temp[i][j] = vari;
         }
 
@@ -206,5 +207,21 @@ int columnCheck(int tempvalue[5][5])
             variable = 1;
         }
     }
+    return variable;
+}
+
+int diagonalCheck(int tempvalue[5][5])
+{
+    int variable = 0;
+
+    if (tempvalue[0][0] == 0 && tempvalue[1][1] == 0 && tempvalue[2][2] == 0 && tempvalue[3][3] == 0 && tempvalue[4][4] == 0)
+    {
+        variable = 1;
+    }
+    else if (tempvalue[0][4] == 0 && tempvalue[1][3] == 0 && tempvalue[2][2] == 0 && tempvalue[3][1] == 0 && tempvalue[4][0] == 0)
+    {
+        variable = 1;
+    }
+
     return variable;
 }
