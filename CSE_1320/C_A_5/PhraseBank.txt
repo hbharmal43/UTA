@@ -1,0 +1,4 @@
+/*Hasnain BHarmal 1001937588*/
+
+
+char *PhraseBank[] = {"The secret of getting ahead is getting started", "Why no one is talking about what he did", "Why are you working on that assignment", "In the middle of every difficulty lies opportunity", "Someone yelled at the neighbour today"};
